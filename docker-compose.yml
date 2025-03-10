@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  mysql-db:
+    container_name: mysql-db  # Usamos o container existente
+    image: mysql:latest  # Garante compatibilidade com a imagem já usada
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+    ports:
+      - "3306:3306"
+    networks:
+      - app_network
+    volumes:
+      - mysql_data:/var/lib/mysql
+    external: true  # Informa que o container já existe
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: jaeger
+    restart: always
+    ports:
+      - "16686:16686" # Interface Web do Jaeger
+      - "4318:4318"   # OpenTelemetry Collector
+      - "14268:14268" # Recebe Traces OTLP HTTP
+      - "14250:14250" # Exportação via gRPC
+      - "6831:6831/udp"
+      - "6832:6832/udp"
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    external: true  # Garante que o volume de dados do MySQL não seja recriado
