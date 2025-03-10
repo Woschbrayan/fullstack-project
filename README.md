@@ -24,6 +24,7 @@ O projeto conta com **autenticação JWT**, um **backend em Node.js com Fastify*
 - ![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)
 - ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 - ![Pinia](https://img.shields.io/badge/Pinia-F6B93B?style=for-the-badge&logo=vue.js&logoColor=white)
+- 
 
 ### Ferramentas de Desenvolvimento
 - ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
@@ -78,8 +79,26 @@ $ npm install
 
 # Execute o projeto
 $ npm run dev
+
+npm install  # Instalar dependências
+
+# Instalar TailwindCSS e configurar
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+# Iniciar o frontend Vue.js
+npm run dev
 ```
 O frontend rodará em: `http://localhost:5173`
+cd ../frontend
+npm install  # Instalar dependências
+
+# Instalar TailwindCSS e configurar
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+# Iniciar o frontend Vue.js
+npm run dev
 
 ---
 
@@ -106,6 +125,8 @@ $ npm test
 
 # Testes de carga com K6
 $ k6 run load-test.js
+
+
 ```
 
 ---
